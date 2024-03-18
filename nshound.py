@@ -10,9 +10,8 @@ from kubernetes import client, config
 
 # TODOs
 # 1. Make it into Krew plugin
-# 2. Add system:authenticated misconfig
-# 3. Add cgroupsv1 escape
-# 4. Add sysfs escape
+# 2. Add cgroupsv1 escape
+# 3. Add sysfs escape
 
 
 # file the finding - both to the output and to the findings array
