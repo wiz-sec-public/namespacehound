@@ -1,5 +1,5 @@
 ## Overview - Kubernetes Multi-Tenancy
-Kubernetes users usually share clusters to meet the demands of multiple teams and multiple customers. As the number of users grow, the need in multi-tenant solution increases as well. There are two ways to handle mult-tenancy - either through dedicated cluster per team or by managing the shared access to the same cluster. In the latter case Kubernetes offers three mechanisms to achieve control plane isolation - through usage of namespaces, RBAC and quotas, with namespace isolation being a driving factor.  
+Kubernetes users usually share clusters to meet the demands of multiple teams and multiple customers. As the number of users grow, the need in multi-tenant solution increases as well. There are two ways to handle multi-tenancy - either through dedicated cluster per team or by managing the shared access to the same cluster. In the latter case Kubernetes offers three mechanisms to achieve control plane isolation - through usage of namespaces, RBAC and quotas, with namespace isolation being a driving factor.  
 
 ## Problem
 In the multi-tenant cluster scenario namespaces become a security isolation controls. For example, two teams sharing the same cluster with access to workloads with varying degree of sensitivity. Or company running SaaS service allocating container / pod for every customer. 
@@ -79,7 +79,7 @@ Sample run:
 +-----------+----------+------------+-----------------------------------+-----------+------+---------------------------+----------------------------------------------------+------------+
 ```
 ### Security and Privacy
-To function properly, NamespaceHound requires K8s API read permissions on all of the resources types. That is the minimal set. Of course principals mapped to *admin*, *cluster-admin* roles and *system:maters* group will work as well.
+To function properly, NamespaceHound requires K8s API read permissions on all of the resource types. That is the minimal set. Of course principals mapped to *admin*, *cluster-admin* roles and *system:masters* group will work as well.
 
 NamespaceHound does not save any data about the target cluster locally. It does not build graph and does not save object material - upon every run, NamespaceHound establishes a new connection with the cluster and performes API server querying in the same capacity.
 
@@ -87,7 +87,7 @@ NamespaceHound does not save any data about the target cluster locally. It does 
 
 | Name    | Severity | Confidence | Description | Method |
 | -------- | ------- | -------- | ------- | ------- |
-| DOS_NO_QUOTA  | LOW | MEDIUM | No resource quota on this namespace. Over-resourced workload can take take other namespace' resources. | Querying API for resource quotas |
+| DOS_NO_QUOTA  | LOW | MEDIUM | No resource quota on this namespace. Over-resourced workloads can take up other namespaces' resources. | Querying API for resource quotas |
 | RBAC_POD_EVICTION | LOW | HIGH | A service account from this namespace can evict pods in another namespace. | Querying RBAC API |
 | RBAC_ANONYMOUS_ACCESS_TO_RESOURCES | MEDIUM | HIGH | Anonymous user has access to resources. Applies to any namespace. | Querying RBAC API |
 | RBAC_SHARED_URLS | MEDIUM | HIGH | A service account from this namespace has access to the non-trivial URLs that potentially include other namespaces data. | Querying RBAC API |
