@@ -87,7 +87,7 @@ NamespaceHound does not save any data about the target cluster locally. It does 
 
 | Name    | Severity | Confidence | Description | Method |
 | -------- | ------- | -------- | ------- | ------- |
-| DOS_NO_QUOTA  | LOW | MEDIUM | No resource quota on this namespace. Over-resourced workload can take up other namespace' resources. | Querying API for resource quotas |
+| DOS_NO_QUOTA  | LOW | MEDIUM | No resource quota on this namespace. Over-resourced workloads can take up other namespaces' resources. | Querying API for resource quotas |
 | RBAC_POD_EVICTION | LOW | HIGH | A service account from this namespace can evict pods in another namespace. | Querying RBAC API |
 | RBAC_ANONYMOUS_ACCESS_TO_RESOURCES | MEDIUM | HIGH | Anonymous user has access to resources. Applies to any namespace. | Querying RBAC API |
 | RBAC_SHARED_URLS | MEDIUM | HIGH | A service account from this namespace has access to the non-trivial URLs that potentially include other namespaces data. | Querying RBAC API |
